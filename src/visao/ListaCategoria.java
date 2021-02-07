@@ -7,6 +7,7 @@ package visao;
 
 import entidades.Categoria;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import persistencia.CategoriaDAO;
 
@@ -21,7 +22,7 @@ public class ListaCategoria extends javax.swing.JFrame {
         initComponents();
         montarListaCategorias();
     }
-    public void montarListaCategorias(){
+    public void montarListaCategorias(){ //limpa tela e atualizar
         categorias=CategoriaDAO.listar();
         DefaultTableModel conteudo=(DefaultTableModel)tabCategorias.getModel();
         conteudo.setRowCount(0);//Eliminar as linhas da tabela
@@ -45,8 +46,10 @@ public class ListaCategoria extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tabCategorias = new javax.swing.JTable();
+        btnExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         tabCategorias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -69,25 +72,61 @@ public class ListaCategoria extends javax.swing.JFrame {
             tabCategorias.getColumnModel().getColumn(0).setResizable(false);
         }
 
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExcluir))
                 .addContainerGap(9, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
+                .addContainerGap(8, Short.MAX_VALUE)
+                .addComponent(btnExcluir)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        int linha =tabCategorias.getSelectedRow();// recebe se o usuario clicou em alguma linha
+        if(linha >-1){
+            Categoria categoria=categorias.get(linha);
+            int opcao =JOptionPane
+                .showConfirmDialog(this,
+                 "Deseja realmente excluir a categoria "+categoria.getNome()+ "?",
+                 "Confirme a exclusão",
+                 JOptionPane.YES_NO_OPTION);
+            if(opcao ==JOptionPane.YES_OPTION){
+                if(CategoriaDAO.excluir(categoria.getId())){
+                    JOptionPane.showMessageDialog(this, "Categoria excluida com sucesso!");
+                    montarListaCategorias();
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, "Erro ao excluir a categoria "+categoria.getNome() +".");
+                    
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Selecione uma categoria para excluir!");
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,6 +164,7 @@ public class ListaCategoria extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabCategorias;
     // End of variables declaration//GEN-END:variables
