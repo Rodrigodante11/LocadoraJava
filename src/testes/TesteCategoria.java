@@ -14,6 +14,8 @@ public class TesteCategoria {
         //CategoriaDAO.inserir(categoria);
         
         categoria.setId(1);
-        CategoriaDAO.alterar(categoria);
+        
+        //CategoriaDAO.alterar(categoria);
+        CategoriaDAO.excluir(1);
     }
 }
