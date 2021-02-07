@@ -3,7 +3,10 @@ package entidades;
 
 
 public class Categoria {
-
+    private int id;
+    private String nome;
+    private char tipo;
+    
     public int getId() {
         return id;
     }
@@ -27,7 +30,17 @@ public class Categoria {
     public void setTipo(char tipo) {
         this.tipo = tipo;
     }
-    private int id;
-    private String nome;
-    private char tipo;
+
+    @Override
+    public String toString() {
+        return "id=" + id 
+                + ", nome=" + nome 
+                + ", tipo=" + tipo +"\n";
+    }
+    
+    public String getNomeTipo(){
+        return tipo =='F' ? "Filme" :"Jogo"; //condicinal ternario
+    }
+    
+    
 }

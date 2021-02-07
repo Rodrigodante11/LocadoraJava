@@ -10,12 +10,11 @@ public class TesteCategoria {
         Categoria categoria=new Categoria();
         categoria.setNome("Comedia");
         categoria.setTipo('F'); //F-filme J-Jogo
-        
-        //CategoriaDAO.inserir(categoria);
-        
         categoria.setId(1);
         
+        //CategoriaDAO.inserir(categoria);
         //CategoriaDAO.alterar(categoria);
-        CategoriaDAO.excluir(1);
+        //CategoriaDAO.excluir(1);
+        System.out.println(CategoriaDAO.listar());
     }
 }
