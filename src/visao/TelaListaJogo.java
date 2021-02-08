@@ -7,6 +7,7 @@ package visao;
 
 import entidades.Jogo;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import persistencia.JogoDAO;
 
@@ -46,6 +47,11 @@ public class TelaListaJogo extends javax.swing.JFrame {
         setResizable(false);
 
         btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setText("Excluir");
 
@@ -108,6 +114,18 @@ public class TelaListaJogo extends javax.swing.JFrame {
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         new TelaCadastroJogo(this).setVisible(true);
     }//GEN-LAST:event_btnNovoActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        int linha= tabJogos.getSelectedRow();// se o usuario seleciono uma linha para alterar
+        if(linha==-1){
+            JOptionPane.showMessageDialog(this, "Delecione um jogo para alterar");
+        }else{
+            TelaCadastroJogo cadastro=new TelaCadastroJogo(this);
+            cadastro.setJogo(listaJogos.get(linha));//Pega o jogo selecionado e envia pra tela de cadastro
+            cadastro.setVisible(true);
+                    
+        }
+    }//GEN-LAST:event_btnAlterarActionPerformed
     public void listarJogos(){
         listaJogos=JogoDAO.listar();
         DefaultTableModel modelo=(DefaultTableModel) tabJogos.getModel();

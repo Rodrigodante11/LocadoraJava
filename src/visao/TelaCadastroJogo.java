@@ -18,13 +18,27 @@ public class TelaCadastroJogo extends javax.swing.JFrame {
     
     private Jogo jogo;
     private TelaListaJogo telaLista;
+    
     /**
      * Creates new form TelaCadastroJogo
      */
+    
+    
     public TelaCadastroJogo(TelaListaJogo telaLista) {
         initComponents();
-        jogo = new Jogo(new Categoria());
+        this.jogo = new Jogo(new Categoria());
         this.telaLista=telaLista;
+    }
+    
+    public void setJogo(Jogo jogo){
+        this.jogo=jogo;
+        txtTitulo.setText(jogo.getTitulo());
+        txtDescricao.setText(jogo.getDescricao());
+        txtCategoria.setText(jogo.getCategoria().getNome());
+        txtPreco.setText(String.valueOf(jogo.getPreco()));
+        txtMemoria.setText(String.valueOf(jogo.getMemoria()));
+        txtNDias.setText(String.valueOf(jogo.getNumeroDias()));
+        txtTipo.setText(jogo.getTipo());
     }
 
     /**
@@ -251,6 +265,8 @@ public class TelaCadastroJogo extends javax.swing.JFrame {
     private void alterar(){
         if(JogoDAO.alterar(jogo)){
             JOptionPane.showMessageDialog(this, "Jogo alterado com sucesso");
+            telaLista.listarJogos();//atualizar a lista apos inserir
+            dispose(); //fechar a tela de cadastro
         }else{
             JOptionPane.showMessageDialog(this, "Erro ao alterar Jogo");
         }
