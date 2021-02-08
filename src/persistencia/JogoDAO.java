@@ -12,7 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 
-public class JogoDao {
+public class JogoDAO {
     public static boolean inserir(Jogo jogo){
         try {
             Connection conexao=Conexao.getConexao();
