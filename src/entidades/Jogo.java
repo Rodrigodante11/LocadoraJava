@@ -9,6 +9,7 @@ public class Jogo extends Item{
         super(categoria);
     }
 
+
     public int getMemoria() {
         return memoria;
     }
