@@ -6,7 +6,8 @@
 package visao;
 
 import entidades.Categoria;
-import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import persistencia.CategoriaDAO;
@@ -17,7 +18,7 @@ import persistencia.CategoriaDAO;
  */
 public class TelaListaCategoria extends javax.swing.JFrame {
 
-   ArrayList<Categoria>categorias;
+   List<Categoria>categorias;
     public TelaListaCategoria() {
         initComponents();
         montarListaCategorias();

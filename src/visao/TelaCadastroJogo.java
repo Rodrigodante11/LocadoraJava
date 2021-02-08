@@ -17,13 +17,14 @@ import persistencia.JogoDAO;
 public class TelaCadastroJogo extends javax.swing.JFrame {
     
     private Jogo jogo;
-
+    private TelaListaJogo telaLista;
     /**
      * Creates new form TelaCadastroJogo
      */
-    public TelaCadastroJogo() {
+    public TelaCadastroJogo(TelaListaJogo telaLista) {
         initComponents();
         jogo = new Jogo(new Categoria());
+        this.telaLista=telaLista;
     }
 
     /**
@@ -217,18 +218,18 @@ public class TelaCadastroJogo extends javax.swing.JFrame {
     private void btnGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarActionPerformed
         try{
             jogo.setTitulo(txtTitulo.getText());
-        jogo.setDescricao(txtDescricao.getText());
-        jogo.setTipo(txtTipo.getText());
-        jogo.setMemoria(Integer.parseInt(txtMemoria.getText()));
-        jogo.setPreco(Double.parseDouble(txtPreco.getText()));
-        jogo.setNumeroDias(Integer.parseInt(txtNDias.getText()));
-        jogo.getCategoria().setNome(txtCategoria.getText());
-        if(jogo.getId()==0) //inserir jogo
-        {
-            inserir();
-        }else{
-            alterar();
-        }
+            jogo.setDescricao(txtDescricao.getText());
+            jogo.setTipo(txtTipo.getText());
+            jogo.setMemoria(Integer.parseInt(txtMemoria.getText()));
+            jogo.setPreco(Double.parseDouble(txtPreco.getText()));
+            jogo.setNumeroDias(Integer.parseInt(txtNDias.getText()));
+            jogo.getCategoria().setNome(txtCategoria.getText());
+            if(jogo.getId()==0) //inserir jogo
+            {
+                inserir();
+            }else{
+                alterar();
+            }
         }
         catch(NumberFormatException e)
         {
@@ -241,7 +242,8 @@ public class TelaCadastroJogo extends javax.swing.JFrame {
     private void inserir(){
         if(JogoDAO.inserir(jogo)){
             JOptionPane.showMessageDialog(this, "Jogo inserido com sucesso!");
-            
+            telaLista.listarJogos();//atualizar a lista apos inserir
+            dispose(); //fechar a tela de cadastro
         }else{
              JOptionPane.showMessageDialog(this, "Erro ao inserir Jogo!");
         }
@@ -253,40 +255,8 @@ public class TelaCadastroJogo extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Erro ao alterar Jogo");
         }
     }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroJogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroJogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroJogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroJogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaCadastroJogo().setVisible(true);
-            }
-        });
-    }
+    
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGravar;
