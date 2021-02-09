@@ -32,13 +32,14 @@ public class Principal extends javax.swing.JFrame {
         btnFilmes = new javax.swing.JButton();
         btnJogos1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnAluguel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Principal.jpg"))); // NOI18N
 
-        btnCategoria.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        btnCategoria.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Categoria.jpg"))); // NOI18N
         btnCategoria.setText("Categoria");
         btnCategoria.addActionListener(new java.awt.event.ActionListener() {
@@ -47,7 +48,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        btnFilmes.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        btnFilmes.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnFilmes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/filme.jpg"))); // NOI18N
         btnFilmes.setText("Filmes");
         btnFilmes.addActionListener(new java.awt.event.ActionListener() {
@@ -56,7 +57,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        btnJogos1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        btnJogos1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnJogos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/jogo.jpg"))); // NOI18N
         btnJogos1.setText("Jogos");
         btnJogos1.addActionListener(new java.awt.event.ActionListener() {
@@ -68,35 +69,47 @@ public class Principal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 3, 36)); // NOI18N
         jLabel1.setText("Sistema de Locadora");
 
+        btnAluguel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnAluguel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Alugar.jpg"))); // NOI18N
+        btnAluguel.setText("Alugar");
+        btnAluguel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAluguelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnCategoria)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnFilmes)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnJogos1)))
-                .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnCategoria)
+                        .addGap(26, 26, 26)
+                        .addComponent(btnFilmes)
+                        .addGap(27, 27, 27)
+                        .addComponent(btnJogos1)
+                        .addGap(26, 26, 26)
+                        .addComponent(btnAluguel)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(85, 85, 85))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCategoria)
-                    .addComponent(btnFilmes)
-                    .addComponent(btnJogos1))
+                    .addComponent(btnAluguel, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnJogos1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -116,6 +129,10 @@ public class Principal extends javax.swing.JFrame {
     private void btnJogos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJogos1ActionPerformed
         new TelaListaJogo().setVisible(true);
     }//GEN-LAST:event_btnJogos1ActionPerformed
+
+    private void btnAluguelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAluguelActionPerformed
+        new TelaAluguel().setVisible(true);
+    }//GEN-LAST:event_btnAluguelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,6 +170,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAluguel;
     private javax.swing.JButton btnCategoria;
     private javax.swing.JButton btnFilmes;
     private javax.swing.JButton btnJogos1;
