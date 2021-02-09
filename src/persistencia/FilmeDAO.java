@@ -24,7 +24,8 @@ public class FilmeDAO {
             Connection conexao= Conexao.getConexao();
             Statement st= conexao.createStatement();
             ResultSet rs= st.executeQuery(sql);
-            while(rs.next()){
+            while(rs.next())
+            {
                 Categoria categoria = new Categoria();
                 categoria.setId(rs.getInt("categoria_id"));
                 categoria.setNome(rs.getString("categoria"));
@@ -39,15 +40,17 @@ public class FilmeDAO {
                 filme.setPreco(rs.getDouble("preco"));
                 filme.setTitulo(rs.getString("titulo"));
                 lista.add(filme);
-                rs.close();
-                st.close();
             }
+            rs.close();
+            st.close();
+            
         } catch (Exception e) {
             System.out.println("FilmeDAO.listar");
             System.out.println(e.getMessage());
-            
+        }finally{
+             return lista;
         }
-            return lista;
+           
     }
     public static boolean inserir(Filme filme){
         try {
@@ -72,4 +75,47 @@ public class FilmeDAO {
             return false;
         }
     }
+    public static boolean alterar(Filme filme){
+        try {
+            String sql= "UPDATE  filme SET titulo=?, descricao=?, preco=?, numeroDias=?, categoria_id=?, diretor=?, duracao=? "
+                    + " Where id = ?";
+            Connection conn=Conexao.getConexao();
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.setString(1, filme.getTitulo());
+            ps.setString(2, filme.getDescricao());
+            ps.setDouble(3, filme.getPreco());
+            ps.setInt(4, filme.getNumeroDias());
+            ps.setInt(5, filme.getCategoria().getId());
+            ps.setString(6, filme.getDiretor());
+            ps.setInt(7, filme.getDuracao());
+            ps.setInt(8, filme.getId());
+            
+            int resultado=ps.executeUpdate();
+            ps.close();
+            return resultado >0;
+            
+        } catch (Exception e) {
+             System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    public static boolean excluir(int id){
+        try {
+            String sql= "DELETE FROM  filme WHERE id = ?";
+            Connection conn=Conexao.getConexao();
+            PreparedStatement ps=conn.prepareStatement(sql);
+            
+            ps.setInt(1, id);
+            
+            int escluidos=ps.executeUpdate();
+            ps.close();
+            return escluidos >0;
+            
+        } catch (Exception e) {
+             System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    
 }
