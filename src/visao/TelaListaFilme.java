@@ -117,17 +117,17 @@ public class TelaListaFilme extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-       // new TelaCadastroJogo(this).setVisible(true);
+       new TelaCadastroFilme(this).setVisible(true);
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         int linha= tabFilme.getSelectedRow();// se o usuario seleciono uma linha para alterar
         if(linha==-1){
-            JOptionPane.showMessageDialog(this, "Delecione um jogo para alterar");
+            JOptionPane.showMessageDialog(this, "Selecione um Filme para alterar");
         }else{
-            //TelaCadastroJogo cadastro=new TelaCadastroJogo(this);
-            //cadastro.setJogo(listaJogos.get(linha));//Pega o jogo selecionado e envia pra tela de cadastro
-            //cadastro.setVisible(true);
+            TelaCadastroFilme cadastro=new TelaCadastroFilme(this);
+            cadastro.setFilme(listaFilme.get(linha));//Pega o filme selecionado e envia pra tela de cadastro
+            cadastro.setVisible(true);
                     
         }
     }//GEN-LAST:event_btnAlterarActionPerformed
@@ -135,7 +135,7 @@ public class TelaListaFilme extends javax.swing.JFrame {
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         int linha=tabFilme.getSelectedRow();
         if(linha ==-1){
-            JOptionPane.showMessageDialog(this, "Selecione uma Filme para excluir!");
+            JOptionPane.showMessageDialog(this, "Selecione um Filme para excluir!");
         }else{
             Filme filme=listaFilme.get(linha);//pegando o jogo selecionado pelo usuario
             String mensagem = "Deseja realmente excluir o Filme "+filme.getTitulo() + "?";

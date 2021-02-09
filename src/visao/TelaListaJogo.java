@@ -123,7 +123,7 @@ public class TelaListaJogo extends javax.swing.JFrame {
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         int linha= tabJogos.getSelectedRow();// se o usuario seleciono uma linha para alterar
         if(linha==-1){
-            JOptionPane.showMessageDialog(this, "Delecione um jogo para alterar");
+            JOptionPane.showMessageDialog(this, "Selecione um jogo para alterar");
         }else{
             TelaCadastroJogo cadastro=new TelaCadastroJogo(this);
             cadastro.setJogo(listaJogos.get(linha));//Pega o jogo selecionado e envia pra tela de cadastro
@@ -135,7 +135,7 @@ public class TelaListaJogo extends javax.swing.JFrame {
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         int linha=tabJogos.getSelectedRow();
         if(linha ==-1){
-            JOptionPane.showMessageDialog(this, "Selecione uma linha para excluir!");
+            JOptionPane.showMessageDialog(this, "Selecione um jogo para excluir!");
         }else{
             Jogo jogo=listaJogos.get(linha);//pegando o jogo selecionado pelo usuario
             String mensagem = "Deseja realmente excluir o jogo "+jogo.getTitulo() + "?";
@@ -146,7 +146,7 @@ public class TelaListaJogo extends javax.swing.JFrame {
                    JOptionPane.showMessageDialog(this, "Jogo Excluido com sucesso");
                    listarJogos();
                }else{
-                   JOptionPane.showMessageDialog(this, "Erro ao escluir jogo!");
+                   JOptionPane.showMessageDialog(this, "Erro ao excluir jogo!");
                }
             }
         }
