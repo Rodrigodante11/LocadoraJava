@@ -41,9 +41,9 @@ public class TesteFilme {
             JOptionPane.showMessageDialog(null, "Erro ao alteradar Filme ");
         }*/
          if(FilmeDAO.excluir(3)){
-            JOptionPane.showMessageDialog(null, "Filme alterado com sucesso");
+            JOptionPane.showMessageDialog(null, "Filme Excluido com sucesso");
         }else{
-            JOptionPane.showMessageDialog(null, "Erro ao alteradar Filme ");
+            JOptionPane.showMessageDialog(null, "Erro ao excluir Filme ");
         }
         System.out.println(FilmeDAO.listar());
     }
