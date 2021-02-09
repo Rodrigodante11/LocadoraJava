@@ -4,12 +4,12 @@ package persistencia;
 
 import entidades.Categoria;
 import entidades.Jogo;
-import java.awt.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class JogoDAO {
@@ -17,14 +17,14 @@ public class JogoDAO {
         try {
             Connection conexao=Conexao.getConexao();
             String sql= "INSERT INTO jogo (titulo, descricao, preco, numeroDias, "
-                    + "categoria, memoria, tipo) VALUES (?,?,?,?,?,?,?)";
+                    + "categoria_id, memoria, tipo) VALUES (?,?,?,?,?,?,?)";
             
             PreparedStatement ps=conexao.prepareStatement(sql);
             ps.setString(1, jogo.getTitulo());
             ps.setString(2, jogo.getDescricao());
             ps.setDouble(3, jogo.getPreco());
             ps.setInt(4, jogo.getNumeroDias());
-            ps.setString(5,jogo.getCategoria().getNome());
+            ps.setInt(5,jogo.getCategoria().getId());
             ps.setInt(6, jogo.getMemoria());
             ps.setString(7, jogo.getTipo());
             int resultado=ps.executeUpdate();
@@ -42,7 +42,7 @@ public class JogoDAO {
             Connection conexao=Conexao.getConexao();
             String sql= "UPDATE jogo SET "
                     +"titulo=?, descricao=?, preco=?, numeroDias=?, "
-                    + "categoria=?, memoria=?, tipo= ? "
+                    + "categoria_id=?, memoria=?, tipo= ? "
                     +"WHERE id= ?";
             
             PreparedStatement ps=conexao.prepareStatement(sql);
@@ -50,7 +50,7 @@ public class JogoDAO {
             ps.setString(2, jogo.getDescricao());
             ps.setDouble(3, jogo.getPreco());
             ps.setInt(4, jogo.getNumeroDias());
-            ps.setString(5,jogo.getCategoria().getNome());
+            ps.setInt(5,jogo.getCategoria().getId());
             ps.setInt(6, jogo.getMemoria());
             ps.setString(7, jogo.getTipo());
             ps.setInt(8, jogo.getId());
@@ -79,17 +79,22 @@ public class JogoDAO {
             return false;
         }
     }
-    public static ArrayList<Jogo> listar(){
-        ArrayList<Jogo> listaJogos = new ArrayList<Jogo>();
+    public static List<Jogo> listar(){
+        List<Jogo> listaJogos = new ArrayList<Jogo>();
         try {
             Connection conexao= Conexao.getConexao();
-            String sql ="SELECT * FROM jogo";
+            String sql ="SELECT  jogo.*, " +
+                        "categoria.nome as categoria, " +
+                        "categoria.tipo as tipo_categoria " +
+                        "FROM jogo " +
+                        "inner join categoria on jogo.categoria_id = categoria.id";
             Statement st= conexao.createStatement();
             ResultSet res= st.executeQuery(sql);
             while(res.next()){
                 Categoria c = new Categoria();
+                c.setId(res.getInt("categoria_id"));
                 c.setNome(res.getString("categoria"));
-                
+                c.setTipo(res.getString("tipo_categoria").charAt(0));
                 Jogo j=new Jogo(c); //Associa a categoria ao jogo
                 j.setDescricao(res.getString("descricao"));
                 j.setId(res.getInt("id"));

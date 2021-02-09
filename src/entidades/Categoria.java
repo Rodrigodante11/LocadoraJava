@@ -33,13 +33,36 @@ public class Categoria {
 
     @Override
     public String toString() {
-        return "id=" + id 
-                + ", nome=" + nome 
-                + ", tipo=" + tipo +"\n";
+        return  nome ;
+                
     }
     
     public String getNomeTipo(){
         return tipo =='F' ? "Filme" :"Jogo"; //condicinal ternario
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Categoria other = (Categoria) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
     }
     
     

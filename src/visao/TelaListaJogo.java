@@ -54,6 +54,11 @@ public class TelaListaJogo extends javax.swing.JFrame {
         });
 
         btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         btnNovo.setText("Novo");
         btnNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -126,6 +131,26 @@ public class TelaListaJogo extends javax.swing.JFrame {
                     
         }
     }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        int linha=tabJogos.getSelectedRow();
+        if(linha ==-1){
+            JOptionPane.showMessageDialog(this, "Selecione uma linha para excluir!");
+        }else{
+            Jogo jogo=listaJogos.get(linha);//pegando o jogo selecionado pelo usuario
+            String mensagem = "Deseja realmente excluir o jogo "+jogo.getTitulo() + "?";
+            int opcao=JOptionPane.showConfirmDialog(this, mensagem,"Confirme a exclusão",
+                    JOptionPane.YES_NO_OPTION);//mostrar botãoSIM e Não
+            if(opcao==JOptionPane.YES_OPTION){
+               if( JogoDAO.excluir(jogo.getId())){
+                   JOptionPane.showMessageDialog(this, "Jogo Excluido com sucesso");
+                   listarJogos();
+               }else{
+                   JOptionPane.showMessageDialog(this, "Erro ao escluir jogo!");
+               }
+            }
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
     public void listarJogos(){
         listaJogos=JogoDAO.listar();
         DefaultTableModel modelo=(DefaultTableModel) tabJogos.getModel();

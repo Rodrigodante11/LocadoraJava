@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 
 
@@ -68,8 +69,8 @@ public class CategoriaDAO {
             }
         }
     
-    public static ArrayList<Categoria> listar(){
-        ArrayList<Categoria> categorias =new ArrayList<Categoria>();
+    public static List<Categoria> listar(){
+        List<Categoria> categorias =new ArrayList<Categoria>();
         try{
             
             Connection conexao= Conexao.getConexao();
@@ -92,6 +93,33 @@ public class CategoriaDAO {
         return categorias;
        
     }
+    public static List<Categoria> listarPorTipo(char tipo){
+        List<Categoria> categorias =new ArrayList<Categoria>();
+        try{
+            
+            Connection conexao= Conexao.getConexao();
+            String sql= "SELECT * FROM categoria WHERE tipo = ? ";
+
+            PreparedStatement comando=conexao.prepareStatement(sql);
+            comando.setString(1,String.valueOf(tipo));
+            ResultSet resultado=comando.executeQuery();
+            while(resultado.next()){
+                Categoria c= new Categoria();
+                c.setId(resultado.getInt("id"));
+                c.setNome(resultado.getString("nome"));
+                //c.setTipo(resultado.getString("tipo").charAt(0));
+                c.setTipo(tipo);
+                categorias.add(c);
+            }
+            resultado.close();
+            comando.close();
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return categorias;
+       
+    }
+    
 }
     
 
