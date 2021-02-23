@@ -27,7 +27,6 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
         btnCategoria = new javax.swing.JButton();
         btnFilmes = new javax.swing.JButton();
         btnJogos1 = new javax.swing.JButton();
@@ -37,10 +36,7 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Principal.jpg"))); // NOI18N
-
         btnCategoria.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Categoria.jpg"))); // NOI18N
         btnCategoria.setText("Categoria");
         btnCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -49,7 +45,6 @@ public class Principal extends javax.swing.JFrame {
         });
 
         btnFilmes.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnFilmes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/filme.jpg"))); // NOI18N
         btnFilmes.setText("Filmes");
         btnFilmes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,7 +53,6 @@ public class Principal extends javax.swing.JFrame {
         });
 
         btnJogos1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnJogos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/jogo.jpg"))); // NOI18N
         btnJogos1.setText("Jogos");
         btnJogos1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,7 +64,6 @@ public class Principal extends javax.swing.JFrame {
         jLabel1.setText("Sistema de Locadora");
 
         btnAluguel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        btnAluguel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Alugar.jpg"))); // NOI18N
         btnAluguel.setText("Alugar");
         btnAluguel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,37 +75,41 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addComponent(btnCategoria)
-                        .addGap(26, 26, 26)
+                        .addGap(29, 29, 29)
                         .addComponent(btnFilmes)
-                        .addGap(27, 27, 27)
+                        .addGap(36, 36, 36)
                         .addComponent(btnJogos1)
-                        .addGap(26, 26, 26)
+                        .addGap(18, 18, 18)
                         .addComponent(btnAluguel)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(85, 85, 85))))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAluguel, btnCategoria, btnFilmes, btnJogos1});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCategoria)
-                    .addComponent(btnAluguel, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFilmes, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnJogos1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                    .addComponent(btnFilmes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnJogos1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAluguel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(202, 202, 202))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAluguel, btnCategoria, btnFilmes, btnJogos1});
 
         pack();
         setLocationRelativeTo(null);
@@ -175,6 +172,5 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btnFilmes;
     private javax.swing.JButton btnJogos1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

@@ -66,12 +66,10 @@ public class TelaAluguel extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabItens);
 
-        btnAlugar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Alugar.jpg"))); // NOI18N
         btnAlugar.setText("Alugar");
 
         lblTotal.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
 
-        btnAdicionarFilme.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/filme.jpg"))); // NOI18N
         btnAdicionarFilme.setText("Acionar Filme");
         btnAdicionarFilme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,7 +77,6 @@ public class TelaAluguel extends javax.swing.JFrame {
             }
         });
 
-        btnAdicionarJogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/jogo.jpg"))); // NOI18N
         btnAdicionarJogo.setText("Adicionar Jogo");
         btnAdicionarJogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

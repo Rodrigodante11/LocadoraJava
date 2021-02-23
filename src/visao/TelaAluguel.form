@@ -178,9 +178,6 @@
     </Container>
     <Component class="javax.swing.JButton" name="btnAlugar">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagens/Alugar.jpg"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Alugar"/>
       </Properties>
     </Component>
@@ -193,9 +190,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnAdicionarFilme">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagens/filme.jpg"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Acionar Filme"/>
       </Properties>
       <Events>
@@ -204,9 +198,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnAdicionarJogo">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagens/jogo.jpg"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Adicionar Jogo"/>
       </Properties>
       <Events>
